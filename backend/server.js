@@ -8,13 +8,17 @@ const recipeRoutes = require("./routes/recipes");
 connectDB();
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(express.json());
-app.use(cors());
 
 app.use("/api/recipe", recipeRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
